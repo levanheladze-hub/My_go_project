@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	// "fmt"
 	"my_go_project/tasksPantela"
 )
 
@@ -77,7 +77,7 @@ func main() {
 	}
 	*/
 
-	//Восьмое задание 
+	/* //Восьмое задание 
 	for category, foods := range tasksPantela.Menu {
     	fmt.Printf("=== %s ===\n", category)
     	for item, price := range foods {
@@ -105,4 +105,19 @@ func main() {
     	}
     	fmt.Println() // Пустая строка между категориями
 	}
+	*/
+
+	// Девятое задание
+	car1 := tasksPantela.Car{Brand: "BMW", Speed: 350.4}
+	car2 := tasksPantela.Car{Brand: "Mersedes", Speed: 370}
+	person1 := tasksPantela.Person{Name: "Зураб", Age: 27, Speed: 6.4}
+	person2 := tasksPantela.Person{Name: "Александр", Age: 25, Speed: 8.4}
+	tasksPantela.PrintMovement(car1)
+	tasksPantela.PrintMovement(person1)
+	peopleAndCars := []tasksPantela.Movable{car1, car2, person1, person2}
+	for _, value := range peopleAndCars {
+		tasksPantela.PrintMovement(value)
+	}
+
+	
 }
