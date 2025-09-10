@@ -2,7 +2,8 @@ package main
 
 import (
 	// "fmt"
-	"my_go_project/tasksPantela"
+	// "log"
+	// "my_go_project/tasksPantela"
 )
 
 func main() {
@@ -107,7 +108,7 @@ func main() {
 	}
 	*/
 
-	// Девятое задание
+	/* // Девятое задание
 	car1 := tasksPantela.Car{Brand: "BMW", Speed: 350.4}
 	car2 := tasksPantela.Car{Brand: "Mersedes", Speed: 370}
 	person1 := tasksPantela.Person{Name: "Зураб", Age: 27, Speed: 6.4}
@@ -118,6 +119,27 @@ func main() {
 	for _, value := range peopleAndCars {
 		tasksPantela.PrintMovement(value)
 	}
+	*/
+	
+	/* // Десятое задание 
+	result, err := tasksPantela.Divide(5,1)
+	if err != nil {
+		log.Println(err)
+	} else {
+		log.Println("Результат деления: ", result)
+	}
+
+	Zuhra := tasksPantela.Human{Name: "Зураб", Age: -1}
+	b := tasksPantela.ValidateAge(Zuhra.Age)
+	if b != nil {
+		log.Println(":", b)
+	} else {
+		log.Println("реальный слоняра")
+	}
+	*/
 
 	
+
+
+
 }

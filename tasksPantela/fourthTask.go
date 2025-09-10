@@ -14,7 +14,7 @@ func xTwoReturnNumbers(num1 int, num2 int) (int, int) {
 
 func xError(x int) (float64, error) {
 	if x <= 1 {
-		return 0.0, fmt.Errorf("Число меньше или равно 1")
+		return 0.0, fmt.Errorf("число меньше или равно 1")
 	}
 	return 1.0/float64(x), nil
 }
