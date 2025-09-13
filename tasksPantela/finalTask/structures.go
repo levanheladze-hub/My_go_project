@@ -19,12 +19,3 @@ type Library struct {
     Users      []User
     Issues     map[int]int // bookID -> userID
 }
-
-type LibraryManager interface {
-    AddBook(book Book) error
-    RegisterUser(user User) error
-    IssueBook(bookID, userID int) error
-    ReturnBook(bookID int) error
-    FindBooksByAuthor(author string) []Book
-    GetStats() (int, int, int)
-}

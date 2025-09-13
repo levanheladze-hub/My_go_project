@@ -18,8 +18,8 @@ func main() {
         {ID: 2, Title: "Brave New World", Author: "Aldous Huxley", Year: 1932},
         {ID: 3, Title: "Как вырастить Зураба в пробирке", Author: "Хеладзе Леван", Year: 2025},
 		{ID: 4, Title: "Как вырастить Зураба в пробирке", Author: "Хеладзе Леван", Year: 2025},
-		{ID: 5, Title: "Как отпиздить корейца", Author: "Учадзе Зураб", Year: 2024}, 
-		{ID: 5, Title: "Как отпиздить корейца", Author: "Учадзе Зураб", Year: 2024}, 
+		{ID: 5, Title: "Как отпиздить корейца", Author: "Хеладзе Леван", Year: 2024}, 
+		{ID: 5, Title: "Как отпиздить корейца", Author: "Хеладзе Леван", Year: 2024}, 
     }
     
     for _, book := range books {
@@ -38,39 +38,50 @@ func main() {
     
     for _, user := range users {
         if err := library.RegisterUser(user); err != nil {
-            fmt.Printf("Ошибка регистрации: %v\n", err)
+            log.Printf("Ошибка регистрации: %v\n", err)
         }
     }
 
-    // // Выдаем книги
-    // if err := library.IssueBook(1, 1); err != nil {
-    //     fmt.Printf("Ошибка выдачи: %v\n", err)
-    // }
-    
-    // if err := library.IssueBook(2, 2); err != nil {
-    //     fmt.Printf("Ошибка выдачи: %v\n", err)
-    // }
+    // Выдаем книги
+    if err := library.IssueBook(1, 1); err != nil {
+        log.Printf("Ошибка выдачи: %v\n", err)
+    }
 
-    // // Пытаемся выдать уже выданную книгу
-    // if err := library.IssueBook(1, 2); err != nil {
-    //     fmt.Printf("Ошибка: %v\n", err) // Должна быть ошибка
-    // }
+    if err := library.IssueBook(2, 2); err != nil {
+        log.Printf("Ошибка выдачи: %v\n", err)
+    }
 
-    // // Ищем книги Orwell
-    // orwellBooks := library.FindBooksByAuthor("George Orwell")
-    // fmt.Println("Книги Orwell:", len(orwellBooks))
+    // Пытаемся выдать уже выданную книгу
+    if err := library.IssueBook(1, 2); err != nil {
+        log.Printf("Ошибка: %v\n", err) // Должна быть ошибка
+    }
 
-    // // Получаем статистику
-    // total, issued, usersCount := library.GetStats()
-    // fmt.Printf("Всего книг: %d, Выдано: %d, Пользователей: %d\n", 
-    //     total, issued, usersCount)
+    // Ищем книги Orwell
+    levanBooks := library.FindBooksByAuthor("Хеладзе Леван")
+    log.Println("Книги Хеладзе Левана:", len(levanBooks))
+    for _, book := range levanBooks {
+        log.Println("Книги автора Хеладзе Левана: ", book.Title)
+    }
 
-    // // Возвращаем книгу
-    // if err := library.ReturnBook(1); err != nil {
-    //     fmt.Printf("Ошибка возврата: %v\n", err)
-    // }
+    // Получаем статистику
+    total, issued, usersCount := library.GetStats()
+    log.Printf("Всего книг: %d, Выдано: %d, Пользователей: %d\n", total, issued, usersCount)
 
-    // // Проверяем статистику после возврата
-    // total, issued, usersCount = library.GetStats()
-    // fmt.Printf("После возврата - Выдано: %d\n", issued)
+    // Возвращаем книгу
+    if err := library.ReturnBook(1); err != nil {
+        log.Printf("Ошибка возврата: %v\n", err)
+    }
+
+    // Проверяем статистику после возврата
+    _, issued, _ = library.GetStats()
+    log.Printf("После возврата - Выдано: %d\n", issued)
+
+    // Выдаем книги
+    if err := library.IssueBook(1, 3); err != nil {
+        log.Printf("Ошибка выдачи: %v\n", err)
+    }
+
+    // Получаем статистику
+    total, issued, usersCount = library.GetStats()
+    log.Printf("Всего книг: %d, Выдано: %d, Пользователей: %d\n", total, issued, usersCount)
 }
